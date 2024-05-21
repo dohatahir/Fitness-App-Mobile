@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, SectionList } from 'react-native';
 import MealItem from './MealItem';
 import { sortMealItems } from '../../utils/mealUtils';
-import { fetchMealItems } from '../../services/mealService/getMeal';
+import { fetchMealItems } from '../../services/getMeal';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 

@@ -1,10 +1,11 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../utils/constants'
 
 
 // Create the context
 export const MealContext = createContext();
-const localhost = "localhost";  
+ 
 
 
 export default function MealContextProvider({ children }) {
@@ -31,7 +32,7 @@ export default function MealContextProvider({ children }) {
   // Function to load user meals
   const loadUserMeals = async () => {
     try {
-      const response = await axios.get('http://'+localhost+':8080/usermeal/');
+      const response = await axios.get('http://'+API_BASE_URL+':8080/usermeal/');
       setUserDiet(response.data);
     } catch (error) {
       console.error('Error fetching usermeal:', error);
@@ -50,7 +51,7 @@ export default function MealContextProvider({ children }) {
 
   const addToUserDiet = async (mealId) => {
     try {
-      const response = await  axios.get(`http://localhost:8080/usermeal/${mealId}`);
+      const response = await  axios.get(`http://${API_BASE_URL}:8080/usermeal/${mealId}`);
 
        const mealData = response.data;
 
@@ -67,7 +68,7 @@ export default function MealContextProvider({ children }) {
   };
  const removeFromUserDiet = async (mealId) => {   try {
    //Perform the deletion in the backend
-    await axios.delete(`http://localhost:8080/usermeal/${mealId}`);
+    await axios.delete(`http://${API_BASE_URL}:8080/usermeal/${mealId}`);
    //Remove the item from the userDiet state
      setUserDiet((prevUserDiet) => prevUserDiet.filter((item) => item.id !== mealId));
 

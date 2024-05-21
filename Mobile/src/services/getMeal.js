@@ -1,7 +1,9 @@
 import axios from 'axios';
-const localhost = "localhost";  
+import API_BASE_URL from '../utils/constants'
+
+ 
 export const fetchMealItems = async () => {
-     const url = "http://"+localhost+":8080/meal/";
+     const url = "http://"+API_BASE_URL+":8080/meal/";
     console.log("Fetching data from:", url);
     try {
         const response = await axios.get(url);
